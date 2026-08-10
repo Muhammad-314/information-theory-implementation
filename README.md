@@ -1,4 +1,4 @@
-# information-theory-implementation
+# Information-Theory-Implementation
 
 An implementation-first exploration of **information theory through code**.
 
@@ -34,7 +34,7 @@ The implementations are intentionally small and explicit. Rather than hiding the
 
 For an event with probability \(p(x)\), self-information is implemented as
 
-$$\nI(x) = -\log_2 p(x)\n$$
+$$I(x) = -\log_2 p(x)$$
 
 This provides the basic intuition behind information theory: **rare events carry more information than common events**.
 
