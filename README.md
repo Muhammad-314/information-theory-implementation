@@ -46,7 +46,7 @@ The notebook experiments with different probabilities to observe this relationsh
 
 For a discrete random variable \(X\),
 
-$$\nH\(X\) = -\sum_x p(x)\log_2 p(x)\n$$
+$$H\(X\) = -\sum_x p(x)\log_2 p(x)$$
 
 Entropy measures the average uncertainty of a probability distribution.
 
@@ -80,7 +80,7 @@ This section is useful for building intuition before moving into joint distribut
 
 For two discrete random variables \(X\) and \(Y\),
 
-$$\nH(X,Y) = -\sum_{x,y} p(x,y)\log_2 p(x,y)\n$$
+$$H(X,Y) = -\sum_{x,y} p(x,y)\log_2 p(x,y)$$
 
 The implementation works with joint probability tables and uses them to explore how uncertainty behaves when considering two variables together.
 
@@ -90,7 +90,7 @@ The implementation works with joint probability tables and uses them to explore 
 
 Conditional entropy is implemented using
 
-$$\nH(Y|X) = H(X,Y) - H\(X\)\n$$
+$$H(Y|X) = H(X,Y) - H\(X\)$$
 
 The notebook uses joint distributions to investigate how observing one variable can reduce uncertainty about another.
 
@@ -102,7 +102,7 @@ This provides the bridge between entropy and mutual information.
 
 Mutual information is implemented as
 
-$$\nI(X;Y) = H\(X\) + H\(Y\) - H(X,Y)\n$$
+$$I(X;Y) = H\(X\) + H\(Y\) - H(X,Y)$$
 
 It is used to measure how much information one random variable contains about another.
 
@@ -121,7 +121,7 @@ An empirical joint-distribution helper is also implemented so that mutual inform
 
 Cross-entropy is implemented as
 
-$$\nH(P,Q) = -\sum_x P(x)\log_2 Q(x)\n$$
+$$H(P,Q) = -\sum_x P(x)\log_2 Q(x)$$
 
 The project explores the connection between cross-entropy, entropy, and probability predictions.
 
@@ -135,7 +135,7 @@ One of the experiments varies the probability assigned to the correct class and 
 
 Kullback–Leibler divergence is implemented as
 
-$$\nD_{KL}(P\|Q) = \sum_x P(x)\log_2\frac{P(x)}{Q(x)}\n$$
+$$D_{KL}(P\|Q) = \sum_x P(x)\log_2\frac{P(x)}{Q(x)}$$
 
 The notebook explores several important properties:
 
@@ -145,7 +145,7 @@ The notebook explores several important properties:
 * increasingly incorrect distributions produce larger divergence
 * the relationship
 
-$$\nD_{KL}(P\|Q) = H(P,Q)-H(P)\n$$
+$nD_{KL}(P\|Q) = H(P,Q)-H(P)$$
 
 is verified numerically.
 
@@ -159,7 +159,7 @@ The project extends KL divergence from discrete distributions to continuous prob
 
 A one-dimensional Gaussian PDF is implemented explicitly, followed by a numerical approximation of
 
-$$\nD_{KL}(P\|Q) = \int p(x)\log_2\frac{p(x)}{q(x)}\,dx\n$$
+$$D_{KL}(P\|Q) = \int p(x)\log_2\frac{p(x)}{q(x)}\,dx$$
 
 The experiments investigate the effect of:
 
@@ -183,11 +183,11 @@ M = \frac{P+Q}{2}
 
 and
 
-$$\nJS(P,Q) = \frac{1}{2}D_{KL}(P\|M) + \frac{1}{2}D_{KL}(Q\|M)\n$$
+$$JS(P,Q) = \frac{1}{2}D_{KL}(P\|M) + \frac{1}{2}D_{KL}(Q\|M)$$
 
 The notebook also implements the equivalent entropy formulation:
 
-$$\nJS(P,Q) = H(M) - \frac{1}{2}H(P) - \frac{1}{2}H(Q)\n$$
+$$JS(P,Q) = H(M) - \frac{1}{2}H(P) - \frac{1}{2}H(Q)$$
 
 The two implementations are compared numerically.
 
