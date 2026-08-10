@@ -8,6 +8,8 @@ This is **not intended as research, a novel contribution, a production-ready lib
 
 ## What this project explores
 
+> **Math rendering:** Equations use standard LaTeX delimiters (`\(...\)` for inline math and `$$...$$` for display math).
+
 The notebook progressively builds up several fundamental information-theoretic concepts:
 
 1. **Self-information**
@@ -30,11 +32,9 @@ The implementations are intentionally small and explicit. Rather than hiding the
 
 ### 1. Self-information
 
-For an event with probability (p(x)), self-information is implemented as
+For an event with probability \(p(x)\), self-information is implemented as
 
-[
-I(x) = -\log_2 p(x)
-]
+$$\nI(x) = -\log_2 p(x)\n$$
 
 This provides the basic intuition behind information theory: **rare events carry more information than common events**.
 
@@ -44,11 +44,9 @@ The notebook experiments with different probabilities to observe this relationsh
 
 ### 2. Shannon entropy
 
-For a discrete random variable (X),
+For a discrete random variable \(X\),
 
-[
-H(X) = -\sum_x p(x)\log_2 p(x)
-]
+$$\nH\(X\) = -\sum_x p(x)\log_2 p(x)\n$$
 
 Entropy measures the average uncertainty of a probability distribution.
 
@@ -80,11 +78,9 @@ This section is useful for building intuition before moving into joint distribut
 
 ### 4. Joint entropy
 
-For two discrete random variables (X) and (Y),
+For two discrete random variables \(X\) and \(Y\),
 
-[
-H(X,Y) = -\sum_{x,y} p(x,y)\log_2 p(x,y)
-]
+$$\nH(X,Y) = -\sum_{x,y} p(x,y)\log_2 p(x,y)\n$$
 
 The implementation works with joint probability tables and uses them to explore how uncertainty behaves when considering two variables together.
 
@@ -94,9 +90,7 @@ The implementation works with joint probability tables and uses them to explore 
 
 Conditional entropy is implemented using
 
-[
-H(Y|X) = H(X,Y) - H(X)
-]
+$$\nH(Y|X) = H(X,Y) - H\(X\)\n$$
 
 The notebook uses joint distributions to investigate how observing one variable can reduce uncertainty about another.
 
@@ -108,12 +102,7 @@ This provides the bridge between entropy and mutual information.
 
 Mutual information is implemented as
 
-[
-I(X;Y)
-======
-
-H(X) + H(Y) - H(X,Y)
-]
+$$\nI(X;Y) = H\(X\) + H\(Y\) - H(X,Y)\n$$
 
 It is used to measure how much information one random variable contains about another.
 
@@ -132,12 +121,7 @@ An empirical joint-distribution helper is also implemented so that mutual inform
 
 Cross-entropy is implemented as
 
-[
-H(P,Q)
-======
-
--\sum_x P(x)\log_2 Q(x)
-]
+$$\nH(P,Q) = -\sum_x P(x)\log_2 Q(x)\n$$
 
 The project explores the connection between cross-entropy, entropy, and probability predictions.
 
@@ -151,28 +135,17 @@ One of the experiments varies the probability assigned to the correct class and 
 
 Kullback–Leibler divergence is implemented as
 
-[
-D_{KL}(P|Q)
-===========
-
-\sum_x P(x)\log_2
-\frac{P(x)}{Q(x)}
-]
+$$\nD_{KL}(P\|Q) = \sum_x P(x)\log_2\frac{P(x)}{Q(x)}\n$$
 
 The notebook explores several important properties:
 
-* (D_{KL}(P|P)=0)
+* \(D_{KL}(P|P)=0\)
 * KL divergence is non-negative
 * KL divergence is not symmetric
 * increasingly incorrect distributions produce larger divergence
 * the relationship
 
-[
-D_{KL}(P|Q)
-===========
-
-H(P,Q)-H(P)
-]
+$$\nD_{KL}(P\|Q) = H(P,Q)-H(P)\n$$
 
 is verified numerically.
 
@@ -186,14 +159,7 @@ The project extends KL divergence from discrete distributions to continuous prob
 
 A one-dimensional Gaussian PDF is implemented explicitly, followed by a numerical approximation of
 
-[
-D_{KL}(P|Q)
-===========
-
-\int p(x)
-\log_2\frac{p(x)}{q(x)}
-,dx
-]
+$$\nD_{KL}(P\|Q) = \int p(x)\log_2\frac{p(x)}{q(x)}\,dx\n$$
 
 The experiments investigate the effect of:
 
@@ -217,27 +183,11 @@ M = \frac{P+Q}{2}
 
 and
 
-[
-JS(P,Q)
-=======
-
-\frac{1}{2}D_{KL}(P|M)
-+
-\frac{1}{2}D_{KL}(Q|M)
-]
+$$\nJS(P,Q) = \frac{1}{2}D_{KL}(P\|M) + \frac{1}{2}D_{KL}(Q\|M)\n$$
 
 The notebook also implements the equivalent entropy formulation:
 
-[
-JS(P,Q)
-=======
-
-## H(M)
-
-## \frac{1}{2}H(P)
-
-\frac{1}{2}H(Q)
-]
+$$\nJS(P,Q) = H(M) - \frac{1}{2}H(P) - \frac{1}{2}H(Q)\n$$
 
 The two implementations are compared numerically.
 
@@ -254,36 +204,36 @@ The experiments also illustrate an important contrast with KL divergence:
 
 The final section brings several of the earlier ideas together in a small simulated classification/information-theory experiment.
 
-A binary variable (Y) is generated, after which two different observations are constructed:
+A binary variable \(Y\) is generated, after which two different observations are constructed:
 
-* (X_1): a noisy version of (Y)
-* (X_2): an independent random variable
+* \(X_1\): a noisy version of \(Y\)
+* \(X_2\): an independent random variable
 
 The notebook then estimates quantities such as:
 
-[
+$$
 I(X_1;Y)
-]
+$$
 
 and
 
-[
+$$
 I(X_2;Y)
-]
+$$
 
 to observe the difference between an informative signal and an unrelated one.
 
 It also computes conditional entropy:
 
-[
+$$
 H(Y|X_1)
-]
+$$
 
 and
 
-[
+$$
 H(Y|X_2)
-]
+$$
 
 and compares different probabilistic predictions using:
 
@@ -339,7 +289,7 @@ That also means the implementations should **not** be interpreted as perfectly g
 D_{KL}(P|Q)
 ]
 
-can be infinite when (P(x)>0) while (Q(x)=0), whereas clipping the probability produces a large finite numerical value instead.
+can be infinite when \(P(x)>0\) while \(Q(x)=0\), whereas clipping the probability produces a large finite numerical value instead.
 
 Similarly, the numerical Gaussian KL calculation integrates over a finite interval and therefore approximates the continuous integral.
 
